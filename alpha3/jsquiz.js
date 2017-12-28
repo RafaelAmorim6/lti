@@ -72,6 +72,13 @@
         $('#start').hide();
     });
 
+    // Animates buttons on hover
+    $('.button').on('mouseenter', function () {
+        $(this).addClass('active');
+    });
+    $('.button').on('mouseleave', function () {
+        $(this).removeClass('active');
+    });
 
     // Creates and returns the div that contains the questions and 
     // the answer selections
@@ -155,12 +162,8 @@
         var request = $.ajax({
             url: "lti/grade_post.php",
             method: "POST",
-            data: { score: parseInt(numCorrect), 
-                lis_result_sourcedid : lis_result_sourcedid,
-                lis_outcome_service_url : lis_outcome_service_url,
-                custom_canvas_assignment_points_possible : custom_canvas_assignment_points_possible
-            },
-        dataType: "html"
+            data: {score: parseInt(numCorrect)},
+            dataType: "html"
         });
     
         request.done(function (msg) {

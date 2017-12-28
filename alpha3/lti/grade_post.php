@@ -1,5 +1,5 @@
 <?php
-header('P3P:CP="CAO IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
+header('P3P:CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
 session_start();
 // Load up the Basic LTI Support code
 require('lti_util.php');
@@ -9,16 +9,16 @@ error_reporting(1);
 //$context->info['lis_outcome_service_url'] = 'http://61.16.177.237/JWSG3/mod/lti/service.php';
 //$context = new BLTI("secret", false, false);
 
-//print_r($_SESSION);die;
+
 if(isset($_REQUEST['score'])){
 	//send pass grade to the lms
 	$grade = $_REQUEST['score'];
 	//if($grade == '5'){
-	$grade = $grade/$_REQUEST['custom_canvas_assignment_points_possible'];
+	$grade = $grade/$_SESSION['custom_canvas_assignment_points_possible'];
 	//}
 
-	echo $grade; 
-    $response = replaceResultRequest($grade, $_REQUEST['lis_result_sourcedid'], $_REQUEST['lis_outcome_service_url'], 'Consumer123', 'Secret123');
+	echo $grade;
+    $response = replaceResultRequest($grade, $_SESSION['lis_result_sourcedid'], $_SESSION['lis_outcome_service_url'], 'Consumer123', 'Secret123');
 
     echo '<pre>';print_r($response);
     sleep(10);

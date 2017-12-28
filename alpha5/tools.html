@@ -1,26 +1,3 @@
-<?php //print_r($_REQUEST);?>
-
-<?php
-header('P3P:CP="CAO IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
-session_start();
-// Load up the Basic LTI Support code
-require_once 'lti/lti_util.php';
-error_reporting(1);
-$context = new BLTI("Consumer123", false, false);
-
-$sourcedid = $_REQUEST['lis_result_sourcedid'];
-
-$_SESSION['lis_result_sourcedid'] =  $sourcedid;
-$_SESSION['lis_outcome_service_url'] = $_REQUEST['lis_outcome_service_url'];
-
-//For speccific canvas score
-$_SESSION['custom_canvas_assignment_points_possible'] = $_REQUEST['custom_canvas_assignment_points_possible'];
-//print_r($_SESSION);
-if (get_magic_quotes_gpc()) $sourcedid = stripslashes($sourcedid);
-$sourcedid = urlencode($sourcedid);
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,9 +24,9 @@ $sourcedid = urlencode($sourcedid);
     </div>-->
   </div>
   <script>
-  var lis_result_sourcedid="<?php echo $_REQUEST['lis_result_sourcedid'];?>";
-  var lis_outcome_service_url="<?php echo $_REQUEST['lis_outcome_service_url'];?>";
-  var custom_canvas_assignment_points_possible="<?php echo $_REQUEST['custom_canvas_assignment_points_possible'];?>";
+  var lis_result_sourcedid="";
+  var lis_outcome_service_url="";
+  var custom_canvas_assignment_points_possible="";
   </script>
 
   <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
