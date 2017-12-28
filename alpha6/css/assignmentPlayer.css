@@ -155,7 +155,7 @@ header .actions-mobile button:hover, header .actions-mobile button:focus {
 }
 .option{
 	position:relative;
-	border:1px solid #f8f8f8;
+	border:1px solid #eee;
 	border-radius:3px;
 	padding:0px 0px;
 	margin:5px 0; 

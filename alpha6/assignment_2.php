@@ -1,3 +1,25 @@
+<?php //print_r($_REQUEST);?>
+
+<?php
+header('P3P:CP="CAO IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
+session_start();
+// Load up the Basic LTI Support code
+require_once 'lti/lti_util.php';
+error_reporting(1);
+$context = new BLTI("Consumer123", false, false);
+
+$sourcedid = $_REQUEST['lis_result_sourcedid'];
+
+$_SESSION['lis_result_sourcedid'] =  $sourcedid;
+$_SESSION['lis_outcome_service_url'] = $_REQUEST['lis_outcome_service_url'];
+
+//For speccific canvas score
+$_SESSION['custom_canvas_assignment_points_possible'] = $_REQUEST['custom_canvas_assignment_points_possible'];
+//print_r($_SESSION);
+if (get_magic_quotes_gpc()) $sourcedid = stripslashes($sourcedid);
+$sourcedid = urlencode($sourcedid);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,8 +61,10 @@
 			
 			<div class="container">
 			<section class="content-section">
-    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-    <div class="clearfix"></div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <div class="clearfix"></div>
   </section>
     <section  id='container'>
             <section class="contentArea" id='quiz'>
@@ -52,15 +76,24 @@
      <section class="header-action">
 			<div class="col-sm-12 primary">
 			  <div class="btn-group nxt-prev" role="group" aria-label="Navigation">
-				<button class="btn btn-default btn-arrow-left" id='prev'><i class="fa fa-arrow-circle-left fa-fw"></i> Prev</button>
-				<button class="btn btn-default btn-arrow-right" id='next'> Next <i class="fa fa-arrow-circle-right fa-fw"></i></button>
-			  </div>
+				<button class="btn btn-default btn-arrow-left" id='prev'><i class="fa fa-arrow-circle-left fa-fw"></i> Previous Question</button>
+				<button class="btn btn-default btn-arrow-right" id='next'> Next Question<i class="fa fa-arrow-circle-right fa-fw"></i></button>
+				<button class="btn btn-default btn-sm" id='start' style="display:none" ><span class="glyphicon glyphicon-refresh"></span> Start Over </button>
+      <a href='#'></a>
+    </div>
+  
+      </div>
 			  <div class="clearfix"></div>
 			</div>
 			<div class="clearfix"></div>
 		  </section>   
 		  <section class="content-section">
-			<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 			<div class="clearfix"></div>
 		  </section>
 		  </div>
@@ -79,9 +112,9 @@
 	<div class="clearfix"/></div>
 </footer>
 <script>
-  var lis_result_sourcedid="";
-  var lis_outcome_service_url="";
-  var custom_canvas_assignment_points_possible="";
+  var lis_result_sourcedid="<?php echo $_REQUEST['lis_result_sourcedid'];?>";
+  var lis_outcome_service_url="<?php echo $_REQUEST['lis_outcome_service_url'];?>";
+  var custom_canvas_assignment_points_possible="<?php echo $_REQUEST['custom_canvas_assignment_points_possible'];?>";
   </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
@@ -92,7 +125,7 @@
 	})
 </script>
 
-<script src="js/main.js" type="text/javascript"></script>
+<!--<script src="js/main.js" type="text/javascript"></script>-->
 <script type="text/javascript" src="js/jsquiz.js"></script>
 
 </body>

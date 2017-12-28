@@ -116,6 +116,7 @@
     function displayNext() {
         quiz.fadeOut(function () {
             $('#question').remove();
+            $('#score_alert').remove();
 
             if (questionCounter < questions.length) {
                 var nextQuestion = createQuestionElement(questionCounter);
@@ -144,7 +145,7 @@
 
     // Computes score and returns a paragraph element to be displayed
     function displayScore() {
-        var score = $('<p class="alert alert-warning text-center">', { id: 'question' });
+        var score = $('<p id="score_alert" class="alert alert-warning text-center">', { id: 'question' });
 
         var numCorrect = 0;
         for (var i = 0; i < selections.length; i++) {
@@ -166,8 +167,8 @@
         request.done(function (msg) {
             //$( "#log" ).html( msg );
         });
-        score.append('You got <strong>' + numCorrect + '</strong> questions out of ' +
-            questions.length + ' right!!!');
+        score.append('<strong>Score : ' + numCorrect + '</strong> out of <strong>' +
+            questions.length + '</strong>');
         return score;
     }
 })();

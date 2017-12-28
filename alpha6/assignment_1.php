@@ -38,7 +38,7 @@ $sourcedid = urlencode($sourcedid);
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
+<body style="overflow: hidden;">
 <header class="main-header-block">
 		
   <section class="header-top">
@@ -50,8 +50,10 @@ $sourcedid = urlencode($sourcedid);
   <section class="header-action">
     <div class="col-sm-12 primary">
       <div class="btn-group nxt-prev" role="group" aria-label="Navigation">
-        <button class="btn btn-default btn-arrow-left" id='prev'><i class="fa fa-arrow-circle-left fa-fw"></i> Prev</button>
-        <button class="btn btn-default btn-arrow-right" id='next'> Next <i class="fa fa-arrow-circle-right fa-fw"></i></button>
+        <button class="btn btn-default btn-arrow-left" id='prev'><i class="fa fa-arrow-circle-left fa-fw"></i> Previous Question</button>
+        <button class="btn btn-default btn-arrow-right" id='next'> Next Question<i class="fa fa-arrow-circle-right fa-fw"></i></button>
+        <button class="btn btn-default btn-sm" id='start' style="display:none" ><span class="glyphicon glyphicon-refresh"></span> Start Over </button>
+     
       </div>
       <div class="clearfix"></div>
     </div>
@@ -92,7 +94,7 @@ $sourcedid = urlencode($sourcedid);
 	})
 </script>
 
-<script src="js/main.js" type="text/javascript"></script>
+<!--<script src="js/main.js" type="text/javascript"></script>-->
 <script type="text/javascript" src="js/jsquiz.js"></script>
 
 </body>
