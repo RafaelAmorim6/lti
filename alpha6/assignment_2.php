@@ -1,4 +1,4 @@
-<?php //print_r($_REQUEST);?>
+<?php print_r($_REQUEST);?>
 
 <?php
 header('P3P:CP="CAO IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
